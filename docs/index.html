@@ -6,74 +6,138 @@
     <title>Pinterest Optimizer | AI-Powered Creator Tools</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --pinterest-red: #E60023;
+            --dark-gray: #111111;
+            --light-gray: #767676;
+        }
         body {
             font-family: 'Inter', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f7f7f7;
-            color: #111;
+            background-color: #ffffff;
+            color: var(--dark-gray);
+            line-height: 1.6;
+        }
+        header {
+            padding: 20px 5%;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            min-height: 100vh;
+            border-bottom: 1px solid #eee;
+        }
+        .logo-text {
+            font-weight: 800;
+            font-size: 24px;
+            color: var(--pinterest-red);
+            text-decoration: none;
+        }
+        .hero {
+            padding: 100px 5%;
             text-align: center;
+            background: linear-gradient(180deg, #fff 0%, #f9f9f9 100%);
         }
-        .container {
-            max-width: 600px;
-            padding: 40px;
-            background: white;
-            border-radius: 32px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-        }
-        .logo {
-            background-color: #E60023;
-            color: white;
-            width: 80px;
-            height: 80px;
-            line-height: 80px;
-            border-radius: 50%;
+        h1 {
             font-size: 48px;
             font-weight: 800;
-            margin: 0 auto 24px;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
         }
-        h1 { font-size: 32px; margin-bottom: 16px; }
-        p { color: #767676; line-height: 1.6; margin-bottom: 32px; }
-        .btn {
-            display: inline-block;
-            background-color: #E60023;
+        .hero p {
+            font-size: 20px;
+            color: var(--light-gray);
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+        .btn-primary {
+            background-color: var(--pinterest-red);
             color: white;
-            padding: 16px 32px;
-            border-radius: 28px;
+            padding: 18px 36px;
+            border-radius: 30px;
             text-decoration: none;
             font-weight: 600;
-            transition: transform 0.2s;
+            font-size: 18px;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 15px rgba(230, 0, 35, 0.2);
         }
-        .btn:hover { transform: scale(1.05); }
-        .footer { margin-top: 40px; font-size: 12px; color: #adadad; }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(230, 0, 35, 0.3);
+        }
+        .features {
+            padding: 80px 5%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        .feature-card {
+            padding: 32px;
+            border-radius: 24px;
+            background: #fff;
+            border: 1px solid #eee;
+        }
+        .feature-card h3 {
+            font-size: 22px;
+            margin-bottom: 16px;
+        }
+        .feature-card p {
+            color: var(--light-gray);
+        }
+        .icon {
+            font-size: 32px;
+            margin-bottom: 16px;
+            display: block;
+        }
+        footer {
+            padding: 60px 5%;
+            text-align: center;
+            border-top: 1px solid #eee;
+            color: var(--light-gray);
+            font-size: 14px;
+        }
+        @media (max-width: 768px) {
+            h1 { font-size: 36px; }
+            .hero { padding: 60px 5%; }
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="logo">P</div>
-        <h1>Account Linked!</h1>
-        <p>Your Pinterest account is ready to be used with the <b>Optimizer App</b>. You can now close this window or tap below to return to the app and start creating.</p>
+    <header>
+        <a href="#" class="logo-text">Pinterest Optimizer</a>
+    </header>
 
-        <a href="pinto://oauth" class="btn">Open Pinterest Optimizer</a>
+    <section class="hero">
+        <h1>Optimize your Pins with AI.</h1>
+        <p>The all-in-one Android application for creators to generate viral captions, find trending hashtags, and schedule posts automatically.</p>
+        <a href="https://github.com/rashika-developer/Pinterest-Optimizer" class="btn-primary">View on GitHub</a>
+    </section>
 
-        <div class="footer">
-            Developed by rashika-developer &bull; Powered by Pinterest API
+    <section class="features">
+        <div class="feature-card">
+            <span class="icon">✨</span>
+            <h3>Smart Captions</h3>
+            <p>Generate high-converting captions in multiple styles: minimal, engaging, or sales-driven. Powered by advanced AI logic.</p>
         </div>
-    </div>
+        <div class="feature-card">
+            <span class="icon">🏷️</span>
+            <h3>Automated Hashtags</h3>
+            <p>Instantly discover 15+ relevant and trending hashtags based on your content and specific niche.</p>
+        </div>
+        <div class="feature-card">
+            <span class="icon">📅</span>
+            <h3>Intelligent Scheduling</h3>
+            <p>Plan your content ahead. Our background engine uploads your Pins at the perfect time for maximum engagement.</p>
+        </div>
+        <div class="feature-card">
+            <span class="icon">📊</span>
+            <h3>AI Board Suggestion</h3>
+            <p>Stop guessing where to post. The app analyzes your Pin and suggests the most relevant board on your profile.</p>
+        </div>
+    </section>
 
-    <script>
-        // Logic to handle OAuth code from Pinterest
-        const urlParams = new URLSearchParams(window.location.search);
-        const code = urlParams.get('code');
-
-        if (code) {
-            // Automatically try to redirect to the app with the code
-            window.location.href = "pinto://oauth?code=" + code;
-        }
-    </script>
+    <footer>
+        <p>&copy; 2024 Pinterest Optimizer. Developed by <a href="https://github.com/rashika-developer" style="color: var(--pinterest-red);">rashika-developer</a></p>
+        <p style="margin-top: 10px; font-size: 12px; opacity: 0.7;">This app uses the official Pinterest API to help you manage your presence more effectively.</p>
+    </footer>
 </body>
 </html>
