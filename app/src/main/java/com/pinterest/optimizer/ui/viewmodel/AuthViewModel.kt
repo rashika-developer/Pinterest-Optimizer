@@ -22,11 +22,13 @@ class AuthViewModel @Inject constructor(
     private val pinterestApi: PinterestApi
 ) : ViewModel() {
 
-    // IMPORTANT: Replace with your actual credentials from developers.pinterest.com
-    private val CLIENT_ID = "YOUR_PINTEREST_CLIENT_ID"
-    private val CLIENT_SECRET = "YOUR_PINTEREST_CLIENT_SECRET"
+    // Your actual credentials from developers.pinterest.com
+    private val CLIENT_ID = "1576008"
+    // Note: Secret is currently pending in your dashboard. 
+    // You will need to paste it here once Pinterest approves it.
+    private val CLIENT_SECRET = "REPLACE_WITH_YOUR_CLIENT_SECRET"
     
-    // Updated to match your specific GitHub repository name
+    // Updated to match your GitHub repository name
     private val REDIRECT_URI = "https://rashika-developer.github.io/Pinterest-Optimizer/"
 
     private val _loginState = MutableStateFlow<LoginState>(LoginState.Idle)
@@ -73,7 +75,7 @@ class AuthViewModel @Inject constructor(
                 _loginState.value = LoginState.Success
             } catch (e: Exception) {
                 e.printStackTrace()
-                _loginState.value = LoginState.Error("Handshake failed. Check your internet connection.")
+                _loginState.value = LoginState.Error("Handshake failed. Check your Secret Key and internet connection.")
             }
         }
     }
