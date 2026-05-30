@@ -3,141 +3,349 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pinterest Optimizer | AI-Powered Creator Tools</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <title>Pinterest Optimizer | AI-Powered Content Creation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --pinterest-red: #E60023;
-            --dark-gray: #111111;
-            --light-gray: #767676;
+            --dark-red: #AD0018;
+            --black: #111111;
+            --white: #FFFFFF;
+            --gray: #767676;
+            --light-gray: #EFEFEF;
         }
-        body {
-            font-family: 'Inter', sans-serif;
+
+        * {
             margin: 0;
             padding: 0;
-            background-color: #ffffff;
-            color: var(--dark-gray);
-            line-height: 1.6;
+            box-sizing: border-box;
         }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--black);
+            background-color: var(--white);
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
         header {
-            padding: 20px 5%;
+            padding: 20px 10%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--light-gray);
         }
-        .logo-text {
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--pinterest-red);
             font-weight: 800;
             font-size: 24px;
-            color: var(--pinterest-red);
+        }
+
+        .logo-icon {
+            background: var(--pinterest-red);
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+        }
+
+        nav a {
             text-decoration: none;
+            color: var(--black);
+            font-weight: 600;
+            margin-left: 30px;
+            font-size: 16px;
+            transition: color 0.2s;
         }
+
+        nav a:hover {
+            color: var(--pinterest-red);
+        }
+
         .hero {
-            padding: 100px 5%;
+            padding: 80px 10% 100px;
             text-align: center;
-            background: linear-gradient(180deg, #fff 0%, #f9f9f9 100%);
+            background: radial-gradient(circle at top right, #fff5f5, #fff);
         }
-        h1 {
-            font-size: 48px;
+
+        .hero h1 {
+            font-size: 64px;
             font-weight: 800;
+            letter-spacing: -2px;
             margin-bottom: 24px;
-            letter-spacing: -1px;
+            line-height: 1.1;
         }
+
+        .hero h1 span {
+            color: var(--pinterest-red);
+        }
+
         .hero p {
-            font-size: 20px;
-            color: var(--light-gray);
-            max-width: 700px;
+            font-size: 22px;
+            color: var(--gray);
+            max-width: 800px;
             margin: 0 auto 40px;
+            font-weight: 400;
         }
-        .btn-primary {
-            background-color: var(--pinterest-red);
+
+        .cta-button {
+            display: inline-block;
+            background: var(--pinterest-red);
             color: white;
             padding: 18px 36px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
+            border-radius: 32px;
+            font-weight: 700;
             font-size: 18px;
-            transition: all 0.2s ease;
-            box-shadow: 0 4px 15px rgba(230, 0, 35, 0.2);
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 20px rgba(230, 0, 35, 0.2);
         }
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(230, 0, 35, 0.3);
+
+        .cta-button:hover {
+            background: var(--dark-red);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(230, 0, 35, 0.3);
         }
-        .features {
-            padding: 80px 5%;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-        }
-        .feature-card {
-            padding: 32px;
+
+        .app-preview {
+            margin-top: 60px;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
             border-radius: 24px;
-            background: #fff;
-            border: 1px solid #eee;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.12);
+            border: 8px solid var(--black);
         }
-        .feature-card h3 {
-            font-size: 22px;
-            margin-bottom: 16px;
-        }
-        .feature-card p {
-            color: var(--light-gray);
-        }
-        .icon {
-            font-size: 32px;
-            margin-bottom: 16px;
+
+        .app-preview img {
+            width: 100%;
             display: block;
         }
-        footer {
-            padding: 60px 5%;
+
+        .features {
+            padding: 100px 10%;
+            background: var(--white);
+        }
+
+        .section-title {
             text-align: center;
-            border-top: 1px solid #eee;
-            color: var(--light-gray);
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 60px;
+            letter-spacing: -1px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            padding: 40px;
+            border-radius: 32px;
+            background: var(--white);
+            border: 1px solid var(--light-gray);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            border-color: var(--pinterest-red);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+        }
+
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .feature-card h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            color: var(--gray);
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .tech-stack {
+            padding: 100px 10%;
+            background: var(--light-gray);
+            text-align: center;
+        }
+
+        .tech-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .tech-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+        }
+
+        .tech-dot {
+            width: 12px;
+            height: 12px;
+            background: var(--pinterest-red);
+            border-radius: 50%;
+        }
+
+        footer {
+            padding: 80px 10% 40px;
+            background: var(--black);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-links a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+        }
+
+        .copyright {
+            color: var(--gray);
             font-size: 14px;
         }
+
         @media (max-width: 768px) {
-            h1 { font-size: 36px; }
-            .hero { padding: 60px 5%; }
+            .hero h1 { font-size: 42px; }
+            .hero p { font-size: 18px; }
+            .section-title { font-size: 32px; }
+            header { padding: 15px 5%; }
+            nav { display: none; }
         }
     </style>
 </head>
 <body>
+
     <header>
-        <a href="#" class="logo-text">Pinterest Optimizer</a>
+        <a href="#" class="logo">
+            <div class="logo-icon">P</div>
+            <span>Optimizer</span>
+        </a>
+        <nav>
+            <a href="#features">Features</a>
+            <a href="#tech">Tech</a>
+            <a href="https://github.com/rashika-developer/Pinterest-Optimizer">GitHub</a>
+        </nav>
     </header>
 
     <section class="hero">
-        <h1>Optimize your Pins with AI.</h1>
-        <p>The all-in-one Android application for creators to generate viral captions, find trending hashtags, and schedule posts automatically.</p>
-        <a href="https://github.com/rashika-developer/Pinterest-Optimizer" class="btn-primary">View on GitHub</a>
+        <h1>Automate your <span>Pinterest</span> growth with AI.</h1>
+        <p>The ultimate Android tool for creators. Generate viral captions, find trending hashtags, and schedule pins automatically with real-world Pinterest integration.</p>
+        <a href="https://github.com/rashika-developer/Pinterest-Optimizer" class="cta-button">Explore on GitHub</a>
+
+        <div class="app-preview">
+            <img src="https://raw.githubusercontent.com/rashika-developer/Pinterest-Optimizer/main/thumbnail.png" alt="Pinterest Optimizer App Preview" onerror="this.src='https://via.placeholder.com/1000x500/E60023/FFFFFF?text=Pinterest+Optimizer+App+Preview'">
+        </div>
     </section>
 
-    <section class="features">
-        <div class="feature-card">
-            <span class="icon">✨</span>
-            <h3>Smart Captions</h3>
-            <p>Generate high-converting captions in multiple styles: minimal, engaging, or sales-driven. Powered by advanced AI logic.</p>
+    <section id="features" class="features">
+        <h2 class="section-title">Everything you need to go viral.</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <span class="feature-icon">🪄</span>
+                <h3>AI Caption Generator</h3>
+                <p>Generate 3 unique styles of captions: Minimal & Aesthetic, Engaging & Conversational, or Sales-Oriented. Let the AI do the copywriting.</p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon">🔥</span>
+                <h3>Hashtag Discovery</h3>
+                <p>Stop guessing. Get 15+ relevant hashtags and trending seasonal tags specifically tailored to your niche and content analysis.</p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon">📅</span>
+                <h3>Smart Scheduling</h3>
+                <p>Plan your week in minutes. Schedule pins to be uploaded automatically in the background using the Android WorkManager engine.</p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon">🖼️</span>
+                <h3>Vision AI Analysis</h3>
+                <p>Upload any image and let our Vision AI detect colors, objects, and styles to suggest the perfect niche categorization and board.</p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon">📈</span>
+                <h3>Live Analytics</h3>
+                <p>Track your real-time performance. Monitor views, saves, and engagement directly within the app's clean analytics dashboard.</p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon">🔐</span>
+                <h3>Secure Auth</h3>
+                <p>Directly link your real Pinterest account via secure OAuth 2.0. Your data stays on your device, private and secure.</p>
+            </div>
         </div>
-        <div class="feature-card">
-            <span class="icon">🏷️</span>
-            <h3>Automated Hashtags</h3>
-            <p>Instantly discover 15+ relevant and trending hashtags based on your content and specific niche.</p>
-        </div>
-        <div class="feature-card">
-            <span class="icon">📅</span>
-            <h3>Intelligent Scheduling</h3>
-            <p>Plan your content ahead. Our background engine uploads your Pins at the perfect time for maximum engagement.</p>
-        </div>
-        <div class="feature-card">
-            <span class="icon">📊</span>
-            <h3>AI Board Suggestion</h3>
-            <p>Stop guessing where to post. The app analyzes your Pin and suggests the most relevant board on your profile.</p>
+    </section>
+
+    <section id="tech" class="tech-stack">
+        <h2 class="section-title">Built with modern tech.</h2>
+        <p>A production-grade architecture designed for speed and reliability.</p>
+        <div class="tech-grid">
+            <div class="tech-item"><div class="tech-dot"></div>Kotlin</div>
+            <div class="tech-item"><div class="tech-dot"></div>Jetpack Compose</div>
+            <div class="tech-item"><div class="tech-dot"></div>Hilt / Dagger</div>
+            <div class="tech-item"><div class="tech-dot"></div>Room DB</div>
+            <div class="tech-item"><div class="tech-dot"></div>WorkManager</div>
+            <div class="tech-item"><div class="tech-dot"></div>Retrofit 2</div>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2024 Pinterest Optimizer. Developed by <a href="https://github.com/rashika-developer" style="color: var(--pinterest-red);">rashika-developer</a></p>
-        <p style="margin-top: 10px; font-size: 12px; opacity: 0.7;">This app uses the official Pinterest API to help you manage your presence more effectively.</p>
+        <span class="footer-logo">Pinterest Optimizer</span>
+        <div class="footer-links">
+            <a href="https://github.com/rashika-developer/Pinterest-Optimizer">Source Code</a>
+            <a href="https://github.com/rashika-developer">Developer Profile</a>
+            <a href="https://developers.pinterest.com/">Pinterest API</a>
+        </div>
+        <p class="copyright">&copy; 2024 Developed by rashika-developer. All rights reserved.</p>
+        <p style="margin-top: 10px; font-size: 12px; color: #555;">Not affiliated with Pinterest Inc. This app uses the official Pinterest API.</p>
     </footer>
+
 </body>
 </html>
